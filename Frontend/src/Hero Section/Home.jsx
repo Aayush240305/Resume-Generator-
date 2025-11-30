@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from "react-router-dom"
 
 export default function Home(){
   return(
@@ -29,14 +28,12 @@ export default function Home(){
 </h1>
       <p className="text-center  text-gray-500 pt-5 text-lg md:text-xl md:pr-28 md:pl-28">Create, customize, and download a job-cracking resume — all in one place, with assistance of AI.</p>
   </div>
-  <Link to="/signup">
   <button type="button" class="inline-flex items-center  text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
 Get Started
 <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
 </svg>
 </button>
-</Link>
 < hr />
       </section>
     )

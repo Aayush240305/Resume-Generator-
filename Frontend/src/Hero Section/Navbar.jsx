@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import logo from '../../public/1000213365-removebg-preview.png'
-import {Link} from "react-router-dom"
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -9,13 +9,13 @@ function Navbar() {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 relative">
             <img src={logo} className="h-16 m-0" alt="Logo" />
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <Link to="/signup"><button
+            <button
               type="button"
               className="text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none"
             >
               Get started
             </button>
-</Link>
+
             <button
               type="button"
               onClick={() => setIsOpen(prev => !prev)}
