@@ -16,7 +16,7 @@ export default function Login() {
         email, password
       },{ withCredentials: true });
       toast.success("User logged in  successfully!");
-      navigate('/dashboard');
+      navigate('/');
     }catch (err) {
   const status = err?.response?.status;
 

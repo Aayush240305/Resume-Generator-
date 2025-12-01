@@ -83,8 +83,42 @@ const loginUser = asyncHandler(async (req,res)=>{
    loggedUser, refreshToken, accessToken
  }, "user logged in successfully"))
  })
+ 
+ const logoutUser = asyncHandler(async (req, res)=>{
+     const user = await User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $unset:{
+        refreshToken:1
+      },
+    },
+    {
+        new:true
+    }
+  )
+
+  return res
+  .status(200)
+  .clearCookie("accessToken",options)
+  .clearCookie("refreshToken",options)
+  .json(new ApiResponse(
+    200, 
+    "User Logged Out successfully"
+    )
+  )
+ })
+ 
+const getUser = asyncHandler(async(req,res)=>{
+  const user = await User.findById(req.user._id).select("-password -refreshToken")
+   res
+   .status(200)
+   .json(new ApiResponse(200, user,  "user fetched successfully"))
+ })
+ 
 
 export {
   registerUser,
   loginUser,
+  logoutUser,
+  getUser,
 }

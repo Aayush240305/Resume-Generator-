@@ -3,13 +3,13 @@ import {createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Hero from './Hero Section/Hero.jsx'
 import Login from './Login.jsx'
 import Signup from './Signup.jsx'
-import Dashboard from './Dashboard.jsx'
+import Dashboard from './Dashboard/Dashboard.jsx'
 import { ToastContainer} from 'react-toastify';
 
 const router = createBrowserRouter(
   [
     {
-      path:"/",
+      path:"/home",
       element: <Hero />,
     },
     {
@@ -21,7 +21,7 @@ const router = createBrowserRouter(
       element: <Signup />,
     },
     {
-      path:"/dashboard",
+      path:"/",
       element: <Dashboard />,
     }
     ]
