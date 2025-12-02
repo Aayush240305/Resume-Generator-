@@ -2,6 +2,8 @@ import React from 'react'
 import { BotMessageSquare, Download, LayoutTemplate, Gift} from 'lucide-react';
 
 export default function Features() {
+  
+  
   return (
     <section id="features" className="max-w-screen-xl mx-auto px-6 py-24">
       <div className="flex flex-col items-center text-center">
