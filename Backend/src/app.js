@@ -19,4 +19,6 @@ limit:"16kb"
 app.use(cookieparser());
 
 import userRouter from './routes/User.routes.js'
+import resumeRouter from './routes/Resume.routes.js'
 app.use('/resume/api/v1/user', userRouter);
+app.use('/resume/api/v1/resume',resumeRouter)

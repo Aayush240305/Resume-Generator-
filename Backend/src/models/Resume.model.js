@@ -2,13 +2,14 @@ import mongoose, { Schema } from "mongoose";
 
 const resumeSchema = new Schema(
   {
-    name: { type: String }, 
+    title: { type: String }, 
     
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-
+    
+    slug: { type: String, unique: true },
     color: { type: String },
     template: { type: String },
 

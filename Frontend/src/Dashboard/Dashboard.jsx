@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import axios from 'axios'
 import {useNavigate} from "react-router-dom"
 import {Plus, X,UserPen} from 'lucide-react';
+import {toast} from 'react-toastify'
 
 export default function Dashboard(){
 const navigate = useNavigate();
@@ -44,15 +45,42 @@ useEffect(()=>{
     navigate('/home')
   }
 }
+
+ async function getResumes(){
+   try{
+    const res = await axios.get('/resume/api/v1/resume/get');
+    setResumes(res.data.data);
+  }catch(err){
+    console.log(err)
+  }
+ }
 fetchUser()
+getResumes()
 },[])
 
-function handleSubmit(e){
+async function handleSubmit(e){
   e.preventDefault();
-  setResumes((prev)=>[...prev, title])
-  setShow(false)
-  setTitle("")
+  try{
+    const res = await axios.post('/resume/api/v1/resume/add', {title});
+    setResumes((prev) => [...prev, res.data.data]);
+    setShow(false)
+    setTitle("");
+    toast.success("Resume added successfully")
+  }catch(e){
+    toast.error("Error occured at time of adding resume")
+  }
 }
+
+ async function removeResume(slug){
+  try{
+    if (!window.confirm("Are you sure?")) return;
+    const res = await axios.delete(`/resume/api/v1/resume/remove/${slug}`);
+    setResumes(prev => prev.filter(r => r.slug !== slug));
+    toast.success("Resume remove successfully");
+  }catch(err){
+    toast.error("Error while removeing resume")
+  }
+ }
 
 return(
   <>
@@ -88,11 +116,12 @@ return(
             const random = colorClasses[Math.floor(Math.random() * colorClasses.length)];
               return(
                <div
-  key={index}
-  className={`flex flex-col justify-center items-center border-2 ${random.border} ${random.bg} w-40 md:w-36 h-48 rounded-lg`}
+  key={resume._id}
+  className={`relative flex flex-col justify-center items-center border-2 ${random.border} ${random.bg} w-40 md:w-36 h-48 rounded-lg`}
 >
+  <button type="button" className="absolute top-2 right-2" onClick={() =>{removeResume(resume.slug)}}>< X className={`${random.text}`}/></button>
   <UserPen className={`${random.text}`} />
-  <p className="text-gray-700">{resume}</p>
+  <p className="text-gray-700">{resume.title}</p>
 </div>
               )
             })
@@ -100,5 +129,5 @@ return(
         </div>
       </div>
     </>
-    )
+  )
 }
