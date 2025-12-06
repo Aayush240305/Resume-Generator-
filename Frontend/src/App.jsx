@@ -4,6 +4,7 @@ import Hero from './Hero Section/Hero.jsx'
 import Login from './Login.jsx'
 import Signup from './Signup.jsx'
 import Dashboard from './Dashboard/Dashboard.jsx'
+import Resume from './Resume/Resume.jsx'
 import { ToastContainer} from 'react-toastify';
 
 const router = createBrowserRouter(
@@ -23,6 +24,10 @@ const router = createBrowserRouter(
     {
       path:"/",
       element: <Dashboard />,
+    },
+    {
+      path:"/resume/:slug",
+      element:<Resume />,
     }
     ]
   )

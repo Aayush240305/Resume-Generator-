@@ -120,7 +120,9 @@ return(
   className={`relative flex flex-col justify-center items-center border-2 ${random.border} ${random.bg} w-40 md:w-36 h-48 rounded-lg`}
 >
   <button type="button" className="absolute top-2 right-2" onClick={() =>{removeResume(resume.slug)}}>< X className={`${random.text}`}/></button>
-  <UserPen className={`${random.text}`} />
+  <UserPen className={`${random.text}`} onClick={()=>{
+    navigate(`/resume/${resume.slug}`)
+  }}/>
   <p className="text-gray-700">{resume.title}</p>
 </div>
               )
