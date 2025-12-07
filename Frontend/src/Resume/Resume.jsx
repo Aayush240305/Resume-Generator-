@@ -12,17 +12,16 @@ import Personalinfo from "./Form/Personalinfo.jsx";
 import Summary from "./Form/Summary.jsx";
 import Experience from "./Form/Experience.jsx";
 import Project from "./Form/Project.jsx";
-import Education from "./Form/Experience.jsx";
+import Education from "./Form/Education.jsx";
 import Skills from "./Form/Skills.jsx";
 
 export default function Resume() {
   const { slug } = useParams();
   const [progress, setProgress] = useState(0);
   const [state, setState] = useState(0);
-  const [input,setInput] = useState("");
 
   const sections = [
-    { id: 0, component: <Personalinfo setInput={setInput}/>  },
+    { id: 0, component: <Personalinfo />  },
     { id: 1, component: <Summary /> },
     { id: 2, component: <Experience /> },
     { id: 3, component: <Education /> },
@@ -95,7 +94,7 @@ export default function Resume() {
               </div>
             </div>
 
-            <div className="border-b-2 pt-2 pb-2">
+            <div className="pt-2 pb-2">
               {sections[state].component}
             </div>
             <div>
@@ -105,7 +104,7 @@ export default function Resume() {
         </div>
         {/* Preview */}
         <div className="flex-1 order-1 md:order-none">
-          <h1>{input}</h1>
+          <h1>Preview</h1>
         </div>
       </div>
     </div>
